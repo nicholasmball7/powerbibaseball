@@ -1007,6 +1007,60 @@
       return ranges;
     }
 
+
+    function isPitchHighlightColumn(header) {
+      const normalized = cleanCell(header).toLowerCase();
+      return normalized === "avg" || normalized === "hh%";
+    }
+
+    function getPitchHighlightRanges() {
+      const ranges = new Map();
+
+      pitchState.headers.forEach((header, index) => {
+        if (!isPitchHighlightColumn(header)) return;
+
+        const values = pitchState.rows
+          .map(row => row[index])
+          .filter(isNumeric)
+          .map(toNumber);
+
+        if (!values.length) return;
+        ranges.set(index, {
+          max: Math.max(...values),
+          min: Math.min(...values)
+        });
+      });
+
+      return ranges;
+    }
+
+
+    function isPitchHighlightColumn(header) {
+      const normalized = cleanCell(header).toLowerCase();
+      return normalized === "avg" || normalized === "hh%";
+    }
+
+    function getPitchHighlightRanges() {
+      const ranges = new Map();
+
+      pitchState.headers.forEach((header, index) => {
+        if (!isPitchHighlightColumn(header)) return;
+
+        const values = pitchState.rows
+          .map(row => row[index])
+          .filter(isNumeric)
+          .map(toNumber);
+
+        if (!values.length) return;
+        ranges.set(index, {
+          max: Math.max(...values),
+          min: Math.min(...values)
+        });
+      });
+
+      return ranges;
+    }
+
     function pitchColumnIsNumeric(index) {
       const sample = pitchState.rows.map(row => row[index]).filter(Boolean).slice(0, 40);
       return sample.length > 0 && sample.filter(isNumeric).length / sample.length >= 0.8;
