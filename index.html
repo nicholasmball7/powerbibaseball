@@ -495,19 +495,19 @@
           <div class="chart-grid">
             <div class="mini-chart">
               <div class="chart-head">
-                <div class="chart-title">Top 10 OVR</div>
+                <div class="chart-title">Top 10 M OVR</div>
               </div>
               <div id="ovrChart" class="chart"></div>
             </div>
             <div class="mini-chart">
               <div class="chart-head">
-                <div class="chart-title">Top 10 XBH</div>
+                <div class="chart-title">Top 10 M EXP TB VOL</div>
               </div>
               <div id="xbhChart" class="chart"></div>
             </div>
             <div class="mini-chart">
               <div class="chart-head">
-                <div class="chart-title">Top 10 TBVol</div>
+                <div class="chart-title">Top 10 M BA XBH</div>
               </div>
               <div id="tbvolChart" class="chart"></div>
             </div>
@@ -736,7 +736,7 @@
     }
 
     function isHighlightColumn(header) {
-      return ["ovr", "xstat", "xsaber", "voba", "hprr"].includes(header.toLowerCase());
+      return ["m ovr", "m ba xbh", "m saber"].includes(header.toLowerCase());
     }
 
     function getHighlightRanges(rows) {
@@ -933,9 +933,9 @@
     }
 
     function renderChart() {
-      renderSingleChart("OVR", els.charts.OVR);
-      renderSingleChart("XBH", els.charts.XBH);
-      renderSingleChart("TBVol", els.charts.TBVol);
+      renderSingleChart("M OVR", els.charts.OVR);
+      renderSingleChart("M EXP TB VOL", els.charts.XBH);
+      renderSingleChart("M BA XBH", els.charts.TBVol);
     }
 
     function updateStats() {
@@ -950,6 +950,8 @@
     function showError(message) {
       els.error.textContent = message;
     }
+
+
 
 
 
